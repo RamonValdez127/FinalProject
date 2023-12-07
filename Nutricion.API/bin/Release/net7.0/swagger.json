@@ -1,0 +1,263 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Nutricion.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Cuentas/login": {
+      "post": {
+        "tags": [
+          "Cuentas"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserToken"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cuentas/registro": {
+      "post": {
+        "tags": [
+          "Cuentas"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserToken"
+            }
+          }
+        }
+      }
+    },
+    "/api/Song/registrar": {
+      "post": {
+        "tags": [
+          "Song"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Song"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/api/Song/lista": {
+      "get": {
+        "tags": [
+          "Song"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Song"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Song/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Song"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WeatherForecast"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Song": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "user": {
+          "type": "string"
+        },
+        "songName": {
+          "type": "string"
+        },
+        "albumCoverLink": {
+          "type": "string"
+        },
+        "artistName": {
+          "type": "string"
+        },
+        "songDuration": {
+          "type": "string"
+        },
+        "displayDuration": {
+          "type": "string"
+        },
+        "displayArtist": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UserToken": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "expiration": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "WeatherForecast": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "temperatureC": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "temperatureF": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "summary": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

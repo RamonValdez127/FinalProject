@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nutricion.PlaylistPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add_icon.png" Text="Añadir Canciones" Clicked="AddButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView
+            x:Name="playlist"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding songName}" FontSize="32" HorizontalOptions="Center"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="1"
+                                    Source="{Binding albumCoverLink}"
+                                    HeightRequest="150"
+                                    HorizontalOptions="Center"/>
+                                <ImageButton Grid.Column="2"
+                                        Source="trash_icon.png"
+                                        HeightRequest="25"
+                                        WidthRequest="25"
+                                        HorizontalOptions="Center"
+                                        BackgroundColor="OrangeRed"
+                                        CornerRadius="5"
+                                        Clicked="DeleteButton_Clicked"
+                                        BindingContext="{Binding .}"/>
+                            </Grid>
+                            <Label Text="{Binding displayArtist}" FontSize="16" HorizontalOptions="Center"/>
+                            <Label Text="{Binding displayDuration}" FontSize="16" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
